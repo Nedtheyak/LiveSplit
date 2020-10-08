@@ -108,6 +108,12 @@
     <Compile Include="View\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ActiveRunEditorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ActiveRunEditorDialog.Designer.cs">
+      <DependentUpon>ActiveRunEditorDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\BrowseSpeedrunComDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ActiveRunEditorDialog.resx">
+      <DependentUpon>ActiveRunEditorDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\BrowseSpeedrunComDialog.resx">
       <DependentUpon>BrowseSpeedrunComDialog.cs</DependentUpon>

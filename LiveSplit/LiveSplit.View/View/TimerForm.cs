@@ -2896,5 +2896,43 @@ namespace LiveSplit.View
                 e.Effect = DragDropEffects.None;
             }
         }
+
+        private void editRunMenuItem_Click(object sender, EventArgs e)
+        {
+            var runCopy = CurrentState.Run.Clone() as IRun;
+            //var activeAutoSplitters = new List<string>(CurrentState.Settings.ActiveAutoSplitters);
+            var editor = new ActiveRunEditorDialog(CurrentState);
+            //editor.RunEdited += editor_RunEdited;
+            //editor.ComparisonRenamed += editor_ComparisonRenamed;
+            //editor.SegmentRemovedOrAdded += editor_SegmentRemovedOrAdded;
+            try
+            {
+                TopMost = false;
+                IsInDialogMode = true;
+                //if (CurrentState.CurrentPhase == TimerPhase.NotRunning)  // TODO: check this
+                //    editor.AllowChangingSegments = true;
+                var result = editor.ShowDialog(this);
+                if (result == DialogResult.Cancel)
+                {
+                    //foreach (var image in runCopy.Select(x => x.Icon))
+                    //    editor.ImagesToDispose.Remove(image);
+                    //editor.ImagesToDispose.Remove(runCopy.GameIcon);
+
+                    //CurrentState.Settings.ActiveAutoSplitters = activeAutoSplitters;
+                    SetRun(runCopy);
+                    CurrentState.CallRunManuallyModified();
+                }
+                //foreach (var image in editor.ImagesToDispose)
+                //    image.Dispose();
+            }
+            finally
+            {
+                TopMost = Layout.Settings.AlwaysOnTop;
+                IsInDialogMode = false;
+            }
+
+            //CurrentState.Run[0].Name = "abcd";
+            //CurrentState.Run[0].SplitTime = new Time(CurrentState.CurrentTimingMethod, new TimeSpan(0, 20, 0));  //.SplitTime.RealTime = new TimeSpan(200000);
+        }
     }
 }
